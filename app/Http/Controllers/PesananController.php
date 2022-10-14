@@ -15,7 +15,7 @@ class PesananController extends Controller
     {
         $pesanan = Pesanan::all();
         // dd($pesanan);
-        return view('admin.index', [
+        return view('admin..pesanan.index', [
             'pesanan' => $pesanan,
         ]);
     }

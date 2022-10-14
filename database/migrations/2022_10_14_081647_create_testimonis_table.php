@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePortofoliosTable extends Migration
+class CreateTestimonisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePortofoliosTable extends Migration
      */
     public function up()
     {
-        Schema::create('portofolios', function (Blueprint $table) {
+        Schema::create('testimonis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('gambar');
-            $table->string('gmbr_2');
-            $table->string('jenis');
+            $table->string('bukti');
+            $table->string('nama');
+            $table->string('ulasan');
         });
     }
 
@@ -29,6 +29,6 @@ class CreatePortofoliosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portofolios');
+        Schema::dropIfExists('testimonis');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class TestimoniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = news::all();
+        $testi = Testimoni::all();
 
-        return view ('admin.news.index',[
-            'news' => $news
+        return view ('admin.testimoni.index',[
+            'testi' => $testi
         ]);
     }
 
@@ -45,10 +45,10 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Testimoni  $testimoni
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show(Testimoni $testimoni)
     {
         //
     }
@@ -56,10 +56,10 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Testimoni  $testimoni
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit(Testimoni $testimoni)
     {
         //
     }
@@ -68,10 +68,10 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Testimoni  $testimoni
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, Testimoni $testimoni)
     {
         //
     }
@@ -79,10 +79,10 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Testimoni  $testimoni
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy(Testimoni $testimoni)
     {
         //
     }

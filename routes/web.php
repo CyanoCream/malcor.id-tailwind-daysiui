@@ -37,9 +37,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/pesanan', 'App\Http\Controllers\PesananController@index' );
-Route::post('/create', 'App\Http\Controllers\PesananController@store' )->name('create.pesanan');
-Route::post('/update/{pesanan}', 'App\Http\Controllers\PesananController@update' )->name('update.pesanan');
+//route admin
+Route::get('/admin', 'App\Http\Controllers\PesananController@index' )->name('admin')->middleware('auth');
+Route::post('/create', 'App\Http\Controllers\PesananController@store' )->name('create.pesanan')->middleware('auth');
+Route::post('/update/{pesanan}', 'App\Http\Controllers\PesananController@update' )->name('update.pesanan')->middleware('auth');
+Route::get('/admin/pesanan', 'App\Http\Controllers\PesananController@index' )->middleware('auth');
+Route::get('/admin/testimoni', 'App\Http\Controllers\TestimoniController@index' )->name('admin.testimoni')->middleware('auth');
+Route::get('/admin/news', 'App\Http\Controllers\NewsController@index' )->name('admin.news')->middleware('auth');
+Route::get('/admin/portofolio', 'App\Http\Controllers\PortofolioController@index' )->name('admin.portofolio')->middleware('auth');
+Route::get('/admin/layanan', 'App\Http\Controllers\LayananController@index' )->name('admin.layanan')->middleware('auth');
 
-
+//route admin create
+Route::post('/create', 'App\Http\Controllers\PesananController@store' )->name('create.pesanan')->middleware('auth');
+Route::post('/update/{pesanan}', 'App\Http\Controllers\PesananController@update' )->name('update.pesanan')->middleware('auth');
 require __DIR__.'/auth.php';

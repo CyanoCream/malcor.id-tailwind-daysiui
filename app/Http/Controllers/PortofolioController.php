@@ -14,7 +14,12 @@ class PortofolioController extends Controller
      */
     public function index()
     {
-        //
+        $porto = Portofolio::all();
+
+        return view ('admin.portofolio.index',
+        [
+            'porto' => $portofolio
+        ]);
     }
 
     /**

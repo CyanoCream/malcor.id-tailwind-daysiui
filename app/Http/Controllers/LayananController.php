@@ -14,7 +14,10 @@ class LayananController extends Controller
      */
     public function index()
     {
-        //
+        $layanan = Layanan::all();
+        return viev ('admin.layanan.index',[
+            'layanan' => $layanan
+        ]);
     }
 
     /**
