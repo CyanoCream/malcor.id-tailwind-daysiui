@@ -22,6 +22,13 @@ class PortofolioController extends Controller
         ]);
     }
 
+    public function view()
+    {
+        $porto = Portofolio::all();
+
+        return $porto;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +47,13 @@ class PortofolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $porto = new Portofolio;
+        $porto->gambar = $request->gambar;
+        $porto->gmbr_2 = $request->gmbr_2;
+        $porto->jenis = $request->jenis;
+        $porto->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -74,7 +87,13 @@ class PortofolioController extends Controller
      */
     public function update(Request $request, Portofolio $portofolio)
     {
-        //
+        $porto = Portofolio::find($portofolio)->firts();
+        $porto->gambar = $request->gambar;
+        $porto->gmbr_2 = $request->gmbr_2;
+        $porto->jenis = $request->jenis;
+        $porto->update();
+
+        return redirect()->back();
     }
 
     /**

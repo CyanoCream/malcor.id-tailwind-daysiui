@@ -21,6 +21,13 @@ class TestimoniController extends Controller
         ]);
     }
 
+    public function view()
+    {
+        $testi = Testimoni::all();
+
+        return $testi;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +46,13 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $testi = new Testi;
+        $testi->bukti = $request->bukti;
+        $testi->nama = $request->nama;
+        $testi->ulasan = $request->ulasan;
+        $testi->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -73,7 +86,14 @@ class TestimoniController extends Controller
      */
     public function update(Request $request, Testimoni $testimoni)
     {
-        //
+        
+        $testi = Testi::find($testimoni)->first();
+        $testi->bukti = $request->bukti;
+        $testi->nama = $request->nama;
+        $testi->ulasan = $request->ulasan;
+        $testi->update();
+
+        return redirect()->back();
     }
 
     /**

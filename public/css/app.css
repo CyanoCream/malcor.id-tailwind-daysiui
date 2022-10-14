@@ -2826,6 +2826,12 @@ body[dir="rtl"] .checkbox:checked,
   --tw-text-opacity: 1;
   color: hsl(var(--bc) / var(--tw-text-opacity));
 }
+.label-text-alt {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: hsl(var(--bc) / var(--tw-text-opacity));
+}
 .label a:hover {
   --tw-text-opacity: 1;
   color: hsl(var(--bc) / var(--tw-text-opacity));
@@ -3419,6 +3425,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .-mr-2 {
   margin-right: -0.5rem;
+}
+.ml-auto {
+  margin-left: auto;
 }
 .block {
   display: block;

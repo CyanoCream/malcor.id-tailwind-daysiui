@@ -20,6 +20,12 @@ class LayananController extends Controller
         ]);
     }
 
+    public function view()
+    {
+        $layanan = Layanan::all();
+        return $layanan;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +44,13 @@ class LayananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $layanan = new Layanan;
+        $layanan->nama_layanan = $request->nama_layanan;
+        $layanan->keterangan = $request->keterangan;
+        $layanan->gambar = $request->gambar;
+        $layanan->save();
+
+        return rediret()->back();
     }
 
     /**
@@ -72,7 +84,13 @@ class LayananController extends Controller
      */
     public function update(Request $request, Layanan $layanan)
     {
-        //
+        $layanan = Layanan::find($layanan)->first();
+        $layanan->nama_layanan = $request->nama_layanan;
+        $layanan->keterangan = $request->keterangan;
+        $layanan->gambar = $request->gambar;
+        $layanan->update();
+
+        return rediret()->back();
     }
 
     /**

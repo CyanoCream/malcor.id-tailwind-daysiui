@@ -37,11 +37,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+//rooute view data user
+Route::get('/user/pesanan', 'App\Http\Controllers\PesananController@view' )->name('user.pesanan');
+Route::get('/user/testimoni', 'App\Http\Controllers\TestimoniController@view' )->name('user.testimoni');
+Route::get('/user/news', 'App\Http\Controllers\NewsController@view' )->name('user.news');
+Route::get('/user/portofolio', 'App\Http\Controllers\PortofolioController@view' )->name('user.portofolio');
+Route::get('/user/layanan', 'App\Http\Controllers\LayananController@view' )->name('user.layanan');
+
 //route admin
 Route::get('/admin', 'App\Http\Controllers\PesananController@index' )->name('admin')->middleware('auth');
-Route::post('/create', 'App\Http\Controllers\PesananController@store' )->name('create.pesanan')->middleware('auth');
-Route::post('/update/{pesanan}', 'App\Http\Controllers\PesananController@update' )->name('update.pesanan')->middleware('auth');
-Route::get('/admin/pesanan', 'App\Http\Controllers\PesananController@index' )->middleware('auth');
+Route::get('/admin/pesanan', 'App\Http\Controllers\PesananController@index' )->name('admin.pesanan')->middleware('auth');
 Route::get('/admin/testimoni', 'App\Http\Controllers\TestimoniController@index' )->name('admin.testimoni')->middleware('auth');
 Route::get('/admin/news', 'App\Http\Controllers\NewsController@index' )->name('admin.news')->middleware('auth');
 Route::get('/admin/portofolio', 'App\Http\Controllers\PortofolioController@index' )->name('admin.portofolio')->middleware('auth');
@@ -49,5 +54,19 @@ Route::get('/admin/layanan', 'App\Http\Controllers\LayananController@index' )->n
 
 //route admin create
 Route::post('/create', 'App\Http\Controllers\PesananController@store' )->name('create.pesanan')->middleware('auth');
+Route::post('/admin/layanan/create', 'App\Http\Controllers\LayananController@store' )->name('create.layanan')->middleware('auth');
+Route::post('/admin/news/create', 'App\Http\Controllers\NewsController@store' )->name('create.news')->middleware('auth');
+Route::post('/admin/portofolio/create', 'App\Http\Controllers\PortofolioController@store' )->name('create.portofolio')->middleware('auth');
+Route::post('/admin/testimoni/create', 'App\Http\Controllers\TestimoniController@store' )->name('create.testimoni')->middleware('auth');
+
+
+//route admin update
 Route::post('/update/{pesanan}', 'App\Http\Controllers\PesananController@update' )->name('update.pesanan')->middleware('auth');
+Route::post('/admin/update/{layanan}', 'App\Http\Controllers\LayananController@update' )->name('update.layanan')->middleware('auth');
+Route::post('/admin/update/{news}', 'App\Http\Controllers\NewsController@update' )->name('update.news')->middleware('auth');
+Route::post('/admin/update/{portofolio}', 'App\Http\Controllers\PortofolioController@update' )->name('update.portofolio')->middleware('auth');
+Route::post('/admin/update/{testimoni}', 'App\Http\Controllers\TestimoniController@update' )->name('update.testimoni')->middleware('auth');
+
 require __DIR__.'/auth.php';
+
+Route::get('/logout', 'PesananController@logout');

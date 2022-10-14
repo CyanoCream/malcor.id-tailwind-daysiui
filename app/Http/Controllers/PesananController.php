@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
+use auth;
 
 class PesananController extends Controller
 {
@@ -18,6 +19,13 @@ class PesananController extends Controller
         return view('admin..pesanan.index', [
             'pesanan' => $pesanan,
         ]);
+    }
+
+    public function view()
+    {
+        $pesanan = Pesanan::all();
+        // dd($pesanan);
+        return $pesanan;
     }
 
     /**
@@ -105,5 +113,13 @@ class PesananController extends Controller
     public function destroy(Pesanan $pesanan)
     {
         //
+    }
+
+    public function logout () 
+    {
+        //logout user
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/');
     }
 }

@@ -21,6 +21,13 @@ class NewsController extends Controller
         ]);
     }
 
+    public function view()
+    {
+        $news = news::all();
+
+        return $news;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +46,14 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $news = new News;
+        $news->judul = $request->judul;
+        $news->konten = $request->konten;
+        $news->gambar = $request->gambar;
+        $news->save();
+
+        return rediretc()->back();
+
     }
 
     /**
@@ -73,7 +87,13 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $news = News::find($news)->first();
+        $news->judul = $request->judul;
+        $news->konten = $request->konten;
+        $news->gambar = $request->gambar;
+        $news->update();
+
+        return rediretc()->back();
     }
 
     /**
