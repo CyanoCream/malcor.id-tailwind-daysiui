@@ -1,4 +1,4 @@
-<!-- <x-guest-layout> -->
+<x-guest-layout>
     <!-- <x-auth-card> -->
         <x-slot name="logo">
             <a href="/">
@@ -7,22 +7,20 @@
         </x-slot>
 
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+      
         
 <form method="POST" action="{{ route('login') }}">
             @csrf
         <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold">Login now!</h1>
-      <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+      <h1 class="text-5xl font-bold text-white">Login now!</h1>
+      <p class="py-6 text-white">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
     </div>
     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div class="card-body">
         <div class="form-control">
+        <x-auth-session-status class="mb-4" :status="session('status')" />
           <label class="label">
             <span class="label-text">Email</span>
           </label>
@@ -39,13 +37,15 @@
           </label>
                 <!-- Password -->
                 <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
+                         <x-input id="password" class="block mt-1 w-full"
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
             </div>
+            
+
+              <!-- Validation Errors -->
+              <x-auth-validation-errors class="mb-4" :errors="$errors" />
           <!-- <input type="text" placeholder="password" class="input input-bordered" /> -->
           <label class="label">
             <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
@@ -86,4 +86,4 @@
             </div> -->
         </form>
     <!-- </x-auth-card> -->
-<!-- </x-guest-layout> -->
+</x-guest-layout>

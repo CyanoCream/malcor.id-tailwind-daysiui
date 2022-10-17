@@ -26,7 +26,7 @@
           <tbody>
             <!-- row 1 -->
             <tr class="hover">
-              <td>1</td>
+              <td>{{$loop->index + 1}}</td>
               <td>{{$p->produk}}</td>
               <td>{{$p->pemesan}}</td>
               <td>{{$p->jumlah}}</td>
@@ -36,7 +36,7 @@
               <td>{{$p->email}}</td>
               <td>
                 @include('admin.pesanan.edit')
-                <a href="" role="button" class="btn" type="submit">Delete</a>
+                <a href="{{route ('delete.pesanan',['pesanan' =>$p->id])}}" role="button" class="btn" type="submit">Delete</a>
               </td>
             </tr>
           </tbody>

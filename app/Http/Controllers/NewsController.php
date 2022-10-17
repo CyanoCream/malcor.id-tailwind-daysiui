@@ -52,7 +52,7 @@ class NewsController extends Controller
         $news->gambar = $request->gambar;
         $news->save();
 
-        return rediretc()->back();
+        return redirect()->back();
 
     }
 
@@ -93,7 +93,7 @@ class NewsController extends Controller
         $news->gambar = $request->gambar;
         $news->update();
 
-        return rediretc()->back();
+        return redirect()->back();
     }
 
     /**
@@ -102,8 +102,12 @@ class NewsController extends Controller
      * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy($news)
     {
-        //
+        $news = News::find($news);
+        // dd($pesanan);
+        $news->delete();
+
+        return redirect()->back();
     }
 }

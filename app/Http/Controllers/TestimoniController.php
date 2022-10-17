@@ -46,7 +46,7 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        $testi = new Testi;
+        $testi = new Testimoni;
         $testi->bukti = $request->bukti;
         $testi->nama = $request->nama;
         $testi->ulasan = $request->ulasan;
@@ -87,7 +87,7 @@ class TestimoniController extends Controller
     public function update(Request $request, Testimoni $testimoni)
     {
         
-        $testi = Testi::find($testimoni)->first();
+        $testi = Testimoni::find($testimoni)->first();
         $testi->bukti = $request->bukti;
         $testi->nama = $request->nama;
         $testi->ulasan = $request->ulasan;
@@ -102,8 +102,11 @@ class TestimoniController extends Controller
      * @param  \App\Models\Testimoni  $testimoni
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimoni $testimoni)
+    public function destroy($testimoni)
     {
-        //
+        $test = Testimoni::find($testimoni);
+        $test->delete();
+
+        return redirect()->back();
     }
 }

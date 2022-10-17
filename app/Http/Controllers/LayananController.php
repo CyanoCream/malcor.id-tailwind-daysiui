@@ -15,7 +15,7 @@ class LayananController extends Controller
     public function index()
     {
         $layanan = Layanan::all();
-        return viev ('admin.layanan.index',[
+        return view ('admin.layanan.index',[
             'layanan' => $layanan
         ]);
     }
@@ -50,7 +50,7 @@ class LayananController extends Controller
         $layanan->gambar = $request->gambar;
         $layanan->save();
 
-        return rediret()->back();
+        return redirect()->back();
     }
 
     /**
@@ -90,7 +90,7 @@ class LayananController extends Controller
         $layanan->gambar = $request->gambar;
         $layanan->update();
 
-        return rediret()->back();
+        return redirect()->back();
     }
 
     /**
@@ -99,8 +99,11 @@ class LayananController extends Controller
      * @param  \App\Models\Layanan  $layanan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Layanan $layanan)
+    public function destroy($layanan)
     {
-        //
+        $layanan = Layanan::find($layanan);
+        $layanan->delete();
+
+        return redirect()->back();
     }
 }

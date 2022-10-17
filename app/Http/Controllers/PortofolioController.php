@@ -18,7 +18,7 @@ class PortofolioController extends Controller
 
         return view ('admin.portofolio.index',
         [
-            'porto' => $portofolio
+            'porto' => $porto
         ]);
     }
 
@@ -87,7 +87,7 @@ class PortofolioController extends Controller
      */
     public function update(Request $request, Portofolio $portofolio)
     {
-        $porto = Portofolio::find($portofolio)->firts();
+        $porto = Portofolio::find($portofolio)->first();
         $porto->gambar = $request->gambar;
         $porto->gmbr_2 = $request->gmbr_2;
         $porto->jenis = $request->jenis;
@@ -102,8 +102,11 @@ class PortofolioController extends Controller
      * @param  \App\Models\Portofolio  $portofolio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Portofolio $portofolio)
+    public function destroy($portofolio)
     {
-        //
+        $porto = Portofolio::find($portofolio);
+        $porto->delete();
+
+        return redirect()->back();
     }
 }

@@ -110,9 +110,13 @@ class PesananController extends Controller
      * @param  \App\Models\Pesanan  $pesanan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pesanan $pesanan)
+    public function destroy($pesanan)
     {
-        //
+        $pesanan = Pesanan::find($pesanan);
+        // dd($pesanan);
+        $pesanan->delete();
+
+        return redirect()->back();
     }
 
     public function logout () 
