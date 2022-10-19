@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Portofolio;
 use Illuminate\Http\Request;
 
@@ -48,8 +48,8 @@ class PortofolioController extends Controller
     public function store(Request $request)
     {
         $porto = new Portofolio;
-        $porto->gambar = $request->gambar;
-        $porto->gmbr_2 = $request->gmbr_2;
+        $porto->gambar = $request->file('gambar')->store('images');
+        $porto->gmbr_2 = $request->file('gmbr_2')->store('images');
         $porto->jenis = $request->jenis;
         $porto->save();
 
@@ -88,8 +88,8 @@ class PortofolioController extends Controller
     public function update(Request $request, Portofolio $portofolio)
     {
         $porto = Portofolio::find($portofolio)->first();
-        $porto->gambar = $request->gambar;
-        $porto->gmbr_2 = $request->gmbr_2;
+        $porto->gambar = $request->file('gambar')->store('images');
+        $porto->gmbr_2 = $request->file('gmbr_2')->store('images');
         $porto->jenis = $request->jenis;
         $porto->update();
 
@@ -105,6 +105,12 @@ class PortofolioController extends Controller
     public function destroy($portofolio)
     {
         $porto = Portofolio::find($portofolio);
+        $images = 'public/'. $porto->gambar;
+        // dd($images);
+       if($porto->gambar)
+        {
+            Storage::delete($porto->gambar);
+        }
         $porto->delete();
 
         return redirect()->back();

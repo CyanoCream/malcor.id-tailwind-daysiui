@@ -5,7 +5,7 @@
 {{-- {{$pesanan}} --}}
 
 @include('admin.pesanan.create')
-<div class="justify-content-center mt-2">
+<div class="justify-content-center">
     <div class="overflow-x-auto">
         <table class="table w-full">
           <!-- head -->

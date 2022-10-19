@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Layanan;
 use Illuminate\Http\Request;
 
@@ -44,10 +44,12 @@ class LayananController extends Controller
      */
     public function store(Request $request)
     {
+        
+        // ddd($request);
         $layanan = new Layanan;
         $layanan->nama_layanan = $request->nama_layanan;
         $layanan->keterangan = $request->keterangan;
-        $layanan->gambar = $request->gambar;
+        $layanan->gambar = $request->file('gambar')->store('images');
         $layanan->save();
 
         return redirect()->back();
@@ -87,7 +89,7 @@ class LayananController extends Controller
         $layanan = Layanan::find($layanan)->first();
         $layanan->nama_layanan = $request->nama_layanan;
         $layanan->keterangan = $request->keterangan;
-        $layanan->gambar = $request->gambar;
+        $layanan->gambar = $request->file('gambar')->store('images');
         $layanan->update();
 
         return redirect()->back();
@@ -101,9 +103,16 @@ class LayananController extends Controller
      */
     public function destroy($layanan)
     {
-        $layanan = Layanan::find($layanan);
-        $layanan->delete();
-
+        $lay = Layanan::find($layanan);
+        $images = 'public/'. $lay->gambar;
+        // dd($images);
+       if($lay->gambar)
+        {
+            Storage::delete($lay->gambar);
+        }
+        
+        $lay->delete();
+        
         return redirect()->back();
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\News;
 use Illuminate\Http\Request;
 
@@ -49,7 +49,7 @@ class NewsController extends Controller
         $news = new News;
         $news->judul = $request->judul;
         $news->konten = $request->konten;
-        $news->gambar = $request->gambar;
+        $news->gambar = $request->file('gambar')->store('images');
         $news->save();
 
         return redirect()->back();
@@ -90,7 +90,7 @@ class NewsController extends Controller
         $news = News::find($news)->first();
         $news->judul = $request->judul;
         $news->konten = $request->konten;
-        $news->gambar = $request->gambar;
+        $news->gambar = $request->file('gambar')->store('images');
         $news->update();
 
         return redirect()->back();
@@ -106,6 +106,12 @@ class NewsController extends Controller
     {
         $news = News::find($news);
         // dd($pesanan);
+        $images = 'public/'. $news->gambar;
+        // dd($images);
+       if($news->gambar)
+        {
+            Storage::delete($news->gambar);
+        }
         $news->delete();
 
         return redirect()->back();

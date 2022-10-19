@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
 
@@ -47,7 +47,7 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         $testi = new Testimoni;
-        $testi->bukti = $request->bukti;
+        $testi->bukti = $request->file('bukti')->store('images');
         $testi->nama = $request->nama;
         $testi->ulasan = $request->ulasan;
         $testi->save();
@@ -88,7 +88,7 @@ class TestimoniController extends Controller
     {
         
         $testi = Testimoni::find($testimoni)->first();
-        $testi->bukti = $request->bukti;
+        $testi->bukti = $request->file('bukti')->store('images');
         $testi->nama = $request->nama;
         $testi->ulasan = $request->ulasan;
         $testi->update();
@@ -105,6 +105,12 @@ class TestimoniController extends Controller
     public function destroy($testimoni)
     {
         $test = Testimoni::find($testimoni);
+        $images = 'public/'. $test->bukti;
+        // dd($images);
+       if($test->gambar)
+        {
+            Storage::delete($test->bukti);
+        }
         $test->delete();
 
         return redirect()->back();

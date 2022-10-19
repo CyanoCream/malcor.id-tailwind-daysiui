@@ -18,7 +18,7 @@ class CreateNewsTable extends Migration
             $table->timestamps();
             $table->string('judul');
             $table->text('konten');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
         });
     }
 

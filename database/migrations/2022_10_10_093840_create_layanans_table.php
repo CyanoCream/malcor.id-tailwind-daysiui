@@ -18,7 +18,7 @@ class CreateLayanansTable extends Migration
             $table->timestamps();
             $table->string('nama_layanan');
             $table->string('keterangan');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
         });
     }
 
