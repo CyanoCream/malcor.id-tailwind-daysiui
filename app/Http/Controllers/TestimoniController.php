@@ -46,6 +46,7 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
+        // ddd($request);
         $testi = new Testimoni;
         $testi->bukti = $request->file('bukti')->store('images');
         $testi->nama = $request->nama;

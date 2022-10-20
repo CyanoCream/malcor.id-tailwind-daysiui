@@ -7,23 +7,12 @@
 <label for="" class="modal-box">
 <form class="form-control" action="{{route('create.testimoni')}}" method="post" enctype="multipart/form-data">
     @csrf    <label for="">Preview</label>
-    <input required type="file" placeholder="Type here" name="gambar" class="file:bg-gradient-to-b
-    file:from-blue-500 file:to-blue-600
-    file:px-6 file:py-3 file:m-5
-    file:border-none
-    file:rounded-full
-    file:text-white
-    file:cursor-pointer
-    file:shadow-lg file:shadow-blue-600/50
-    bg-gradient-to-br from-gray-700
-    text-white/80
-    rounded-full
-    cursor-pointer
-    shadow-xl shadow-gray-700/60" value="" />
+    <input  required type="file" placeholder="Type here" name="bukti" class="input-bordered block w-full text-lg text-gray-900 bg-gray-90 rounded-lg border border-gray-400 cursor-pointer dark:text-gray-500 focus:outline-none dark:bg-gray-900 dark:border-yellow-800 dark:placeholder-gray-500" id="large_size" >
+    <!-- <input required type="file" placeholder="Type here" name="bukti" class="input input-bordered block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" value="" /> -->
     <label for="">Judul</label>
-    <input required type="text" placeholder="Type here" name="judul" class="input input-bordered w-full " />
-    <label for="">Konten</label>
-    <input required type="text" placeholder="Type here" name="konten" class="input input-bordered w-full " />
+    <input required type="text" placeholder="Type here" name="nama" class="input input-bordered w-full " />
+    <label for="">Ulasan</label>
+    <input required type="text" placeholder="Type here" name="ulasan" class="input input-bordered w-full " />
     <label for="my-modal-3" class="btn modal-button mb-2 mt-2">Cancel</label>
     <button class="btn btn-primary" type="submit">Save</button>
     </form>

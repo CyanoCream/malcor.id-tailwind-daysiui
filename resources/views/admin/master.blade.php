@@ -12,6 +12,15 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}"/>
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        <style>
+        .swal-overlay {
+                    background-color: rgba(43, 165, 137, 0.45);
+                    }
+        .swal-modal {
+                    background-color: rgb(63,255,106,0.69);
+                    border: 3px solid white;
+                    }
+        </style>
     </head>
     <body>
         @include('admin.navbar')
@@ -24,4 +33,7 @@
 
     </body>
     @include('admin.footer')
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>
+@yield('js')

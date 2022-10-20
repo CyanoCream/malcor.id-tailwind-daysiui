@@ -69,11 +69,11 @@ Route::post('/admin/update/testimoni/{testimoni}', 'App\Http\Controllers\Testimo
 
 
 //route admin delete
-Route::get('/admin/delete/{pesanan}', 'App\Http\Controllers\PesananController@destroy' )->name('delete.pesanan')->middleware('auth');
+Route::get('/admin/delete/pesanan/{pesanan}', 'App\Http\Controllers\PesananController@destroy' )->name('delete.pesanan')->middleware('auth');
 Route::get('/admin/delete/layanan/{layanan}', 'App\Http\Controllers\LayananController@destroy' )->name('delete.layanan')->middleware('auth');
 Route::get('/admin/delete/news/{news}', 'App\Http\Controllers\NewsController@destroy' )->name('delete.news')->middleware('auth');
 Route::get('/admin/delete/portofolio/{portofolio}', 'App\Http\Controllers\PortofolioController@destroy' )->name('delete.portofolio')->middleware('auth');
-Route::get('/admin/delete//testimoni/{testimoni}', 'App\Http\Controllers\TestimoniController@destroy' )->name('delete.testimoni')->middleware('auth');
+Route::get('/admin/delete/testimoni/{testimoni}', 'App\Http\Controllers\TestimoniController@destroy' )->name('delete.testimoni')->middleware('auth');
 require __DIR__.'/auth.php';
 
 Route::get('/logout', 'PesananController@logout');

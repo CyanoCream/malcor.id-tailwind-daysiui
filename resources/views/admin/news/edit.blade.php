@@ -8,19 +8,7 @@
     <form class="form-control" action="{{route('update.news',['news' => $n->id])}}" method="post" enctype="multipart/form-data">
     @csrf
     <label for="">Preview</label>
-    <input required type="file" placeholder="Type here" name="gambar" class="file:bg-gradient-to-b
-    file:from-blue-500 file:to-blue-600
-    file:px-6 file:py-3 file:m-5
-    file:border-none
-    file:rounded-full
-    file:text-white
-    file:cursor-pointer
-    file:shadow-lg file:shadow-blue-600/50
-    bg-gradient-to-br from-gray-700
-    text-white/80
-    rounded-full
-    cursor-pointer
-    shadow-xl shadow-gray-700/60" value="" />
+    <input required type="file" placeholder="Type here" name="gambar" class="input-bordered block w-full text-lg text-gray-900 bg-gray-90 rounded-lg border border-gray-400 cursor-pointer dark:text-gray-500 focus:outline-none dark:bg-gray-900 dark:border-yellow-800 dark:placeholder-gray-500" id="large_size" value="" />
     <label for="">Judul</label>
     <input required type="text" placeholder="Type here" name="judul" class="input input-bordered w-full" />
     <label for="">Konten</label>
