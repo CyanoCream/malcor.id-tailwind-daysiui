@@ -19,6 +19,7 @@
               <th>Nama Perusahaan</th>
               <th>Nomor WA</th>
               <th>Email</th>
+              <th>Status Pesanan</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -42,6 +43,11 @@
               <td>{{$p->nama_perusahaan}}</td>
               <td>{{$p->nomorwa}}</td>
               <td>{{$p->email}}</td>
+              @if($p->status=1)
+              <td>Status Sukses</td>
+               @else
+              <td>Masih Dalam Proses</td>
+              @endif
               <td>
                 @include('admin.pesanan.edit')
                 <a href="#" role="button" class="btn delete" data-id="{{$p->id}}" data-nama="{{$p->produk}}">Delete</a>

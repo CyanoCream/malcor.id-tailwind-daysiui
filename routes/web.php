@@ -13,17 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/portofolio', function () {
-    return view('portofolio.index');
-});
+//view user
+Route::get('/', 'App\Http\Controllers\LayananController@view' )->name('home');
+Route::get('/portofolio', 'App\Http\Controllers\PortofolioController@view' );
+Route::get('/tips', 'App\Http\Controllers\NewsController@view' );
 
-Route::get('/tips', function () {
-    return view('pelanggan.index');
-});
+
+
+
+
 
 Route::get('/about', function () {
     return view('about.index');
@@ -33,9 +35,11 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::post('/pesan', 'App\Http\Controllers\PesananController@buat' )->name('buat.pesanan');
 
 //rooute view data user
 Route::get('/user/pesanan', 'App\Http\Controllers\PesananController@view' )->name('user.pesanan');

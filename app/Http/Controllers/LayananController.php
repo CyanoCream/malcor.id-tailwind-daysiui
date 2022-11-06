@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Layanan;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class LayananController extends Controller
@@ -22,8 +23,12 @@ class LayananController extends Controller
 
     public function view()
     {
+        $news = News::all();
         $layanan = Layanan::all();
-        return $layanan;
+        return view ('welcome', [
+            'layanan' => $layanan,
+            'news' => $news
+        ]);
     }
 
     /**

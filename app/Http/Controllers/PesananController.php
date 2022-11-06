@@ -59,6 +59,27 @@ class PesananController extends Controller
         return redirect()->back();
     }
 
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function buat(Request $request)
+    {
+        $pesanan = new Pesanan;
+        $pesanan->produk = $request->produk;
+        $pesanan->pemesan = $request->pemesan;
+        $pesanan->jumlah = $request->jumlah;
+        $pesanan->nama = $request->nama;
+        $pesanan->nama_perusahaan = $request->nama_perusahaan;
+        $pesanan->nomorwa = $request->nomorwa;
+        $pesanan->email = $request->email;
+        $pesanan->save();
+
+        return redirect()->back();
+    }
+
     /**
      * Display the specified resource.
      *
@@ -90,7 +111,7 @@ class PesananController extends Controller
      */
     public function update(Request $request, Pesanan $pesanan)
     {
-        $pesanan = new Pesanan;
+        $pesanan = Pesanan::find($pesanan)->first();
         $pesanan->produk = $request->produk;
         $pesanan->pemesan = $request->pemesan;
         $pesanan->jumlah = $request->jumlah;
@@ -98,8 +119,9 @@ class PesananController extends Controller
         $pesanan->nama_perusahaan = $request->nama_perusahaan;
         $pesanan->nomorwa = $request->nomorwa;
         $pesanan->email = $request->email;
+        $pesanan->status = $request->status;
         $pesanan->update();
-
+        // dd($request);
         // return $request;
         return redirect()->back();
     }

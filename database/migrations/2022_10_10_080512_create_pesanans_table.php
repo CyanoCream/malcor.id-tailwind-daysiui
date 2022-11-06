@@ -23,6 +23,7 @@ class CreatePesanansTable extends Migration
             $table->string('nama_perusahaan');
             $table->char('nomorwa');
             $table->string('email');
+            $table->integer('status')->default('0');
         });
     }
 

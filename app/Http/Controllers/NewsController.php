@@ -25,7 +25,9 @@ class NewsController extends Controller
     {
         $news = news::all();
 
-        return $news;
+        return view ('pelanggan.index',[
+            'news' => $news
+        ]);
     }
 
     /**

@@ -25,8 +25,10 @@ class PortofolioController extends Controller
     public function view()
     {
         $porto = Portofolio::all();
-
-        return $porto;
+        // dd($porto);
+        return view ('portofolio.index', [
+            'porto' => $porto
+        ]);
     }
 
     /**

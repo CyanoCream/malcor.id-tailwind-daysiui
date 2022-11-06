@@ -8,7 +8,7 @@
     <div class="modal ">
       <div class="modal-box relative bg-sky-600">
         <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-        <form class="form-control" action="{{route('create.pesanan')}}" method="post">
+        <form class="form-control" action="{{route('buat.pesanan')}}" method="post">
             @csrf
             <label for="">Nama Produk</label>
             <input required type="text" placeholder="Type here" name="produk" class="input input-bordered w-full " />

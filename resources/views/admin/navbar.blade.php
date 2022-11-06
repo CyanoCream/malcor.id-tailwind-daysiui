@@ -1,7 +1,7 @@
 <div class="container p-1">
 <div class="navbar bg-base-100">
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl">Malcor.id</a>
+      <a href="/" class="btn btn-ghost normal-case text-xl">Malcor.id</a>
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal p-0">
